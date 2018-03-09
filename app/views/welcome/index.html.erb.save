@@ -1,0 +1,12 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center><h1><b><i>WELCOME</i></b></h1>
+
+<h2><b><%= link_to 'PPG Analyser', controller: 'patients' %></b></h2></center>
+<body background="C:\Sites\blog\app\views\welcome\image4.jpg">
+</body>

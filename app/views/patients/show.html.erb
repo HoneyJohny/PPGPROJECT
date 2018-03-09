@@ -1,0 +1,42 @@
+<h2><b>patient data</b></h2>
+<p>
+  <strong>Name:</strong>
+  <%= @patient.name %>
+</p>
+ 
+<p>
+  <strong>Age:</strong>
+  <%= @patient.age %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @patient.height %>
+</p>
+
+<p>
+  <strong>Bloodgroup:</strong>
+  <%= @patient.bloodgroup %>
+</p>
+<p>
+  <strong>weight:</strong>
+  <%= @patient.weight %>
+</p>
+<p>
+  <strong>comments:</strong>
+  <%= @patient.comments %>
+</p>
+<hr/>
+<h2><b>diagnosis:</b></h2>
+<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/Testing_parameters.txt", "r") do |f| %>
+<% f.each_line do |line| %>
+   <% puts line %>
+  <% end %>
+<% end %>
+
+<%= File.read("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/Testing_parameters.txt") %>
+
+<br>
+<br><center><%= link_to 'Edit', edit_patient_path(@patient) %>
+
+<%= link_to 'Back', patients_path %></center>

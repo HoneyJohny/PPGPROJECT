@@ -1,0 +1,25 @@
+<center><h1><b>List of Patients</b></h1>
+ <table>
+<tr>
+   <h2> <th><b>Name</b></th>
+    <th>Age</th>
+     <th>Height</th>
+ 
+</h2></tr>
+ 
+  <% @patients.each do |patient| %>
+    <h3><tr>
+      <td><%= patient.name %></td>
+      
+      <td><%= link_to 'Show', patient_path(patient) %></td>
+      <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
+      <td><%= link_to 'Delete', patient_path(patient),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    
+    </tr></h3>
+  <% end %>
+</table><h3>
+ <%= link_to 'create new patient', new_patient_path %>
+<br>
+<%= link_to 'Home', welcome_index_path %></center></h3>
