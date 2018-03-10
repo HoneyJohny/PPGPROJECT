@@ -39,7 +39,7 @@
 
 <% i=0 %>
 <% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.name}.txt").each_line do |line| %>
-<% break if i==21%>
+<% break if i==28%>
 <% i=i+1 %>
 
 <% if i==1 %>
@@ -53,24 +53,31 @@
 <% else %>
 <% if i==3 %>
 <th><big><%= line %></big></th>
+
+<% else %>
+<% if i==4 %>
+<th><big><%= line %></big></th>
 </tr>
 
 <% else %>
-
-<% if i%3==1 %>
+<% if i%4==1 %>
 <tr>
 <td><%= line %></td>
 
 <% else %>
-
-<% if i%3==2 %>
+<% if i%4==2 %>
 <td><%= line %></td>
 
+<% else %>
+<% if i%4==3 %>
+<td><%= line %></td>
 
 <% else %>
 <td><%= line %></td>
 </tr>
 
+<% end %>
+<% end %>
 <% end %>
 <% end %>
 <% end %>
@@ -78,6 +85,9 @@
 <% end %>
 <% end %>
 </table>
+<br>
+<hr />
+<h2><big><b>INFERENCE:</b></big></h2>
 <br>
 <br><center><%= link_to 'Edit', edit_patient_path(@patient) %>
 
