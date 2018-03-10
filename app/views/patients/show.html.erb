@@ -1,41 +1,83 @@
-<h2><b>patient data</b></h2>
-<p>
-  <strong>Name:</strong>
-  <%= @patient.name %>
-</p>
- 
-<p>
-  <strong>Age:</strong>
-  <%= @patient.age %>
-</p>
+<h2><big><b>PATIENT DATA</b></big></h2>
+<table>
+<tr>
+<td><strong>Name:</strong></td>
+<td><%= @patient.name %></td>
+</tr>
 
-<p>
-  <strong>Height:</strong>
-  <%= @patient.height %>
-</p>
+<tr>
+<td><strong>Age:</strong></td>
+<td><%= @patient.age %></td>
+</tr>
 
-<p>
-  <strong>Bloodgroup:</strong>
-  <%= @patient.bloodgroup %>
-</p>
-<p>
-  <strong>weight:</strong>
-  <%= @patient.weight %>
-</p>
-<p>
-  <strong>comments:</strong>
-  <%= @patient.comments %>
-</p>
+<tr>
+<td><strong>Height:</strong></td>
+<td><%= @patient.height %></td>
+</tr>
+  
+<tr>
+<td><strong>Bloodgroup:</strong></td>
+<td><%= @patient.bloodgroup %></td>
+</tr>
+
+<tr>
+<td><strong>weight:</strong></td>
+<td><%= @patient.weight %></td>
+</tr>
+  
+<tr>
+<td><strong>comments:</strong></td>
+<td><%= @patient.comments %></td>
+</tr>
+
+</table>
+
 <hr/>
-<h2><b>diagnosis:</b></h2>
-<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/Testing_parameters.txt", "r") do |f| %>
-<% f.each_line do |line| %>
-   <% puts line %>
-  <% end %>
+<h2><big><b>DIAGNOSIS:</b></big></h2>
+
+<table border="2">
+
+<% i=0 %>
+<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.name}.txt").each_line do |line| %>
+<% break if i==21%>
+<% i=i+1 %>
+
+<% if i==1 %>
+<tr>
+<th><big><%= line %></big></th>
+
+<% else %>
+<% if i==2 %>
+<th><big><%= line %></big></th>
+
+<% else %>
+<% if i==3 %>
+<th><big><%= line %></big></th>
+</tr>
+
+<% else %>
+
+<% if i%3==1 %>
+<tr>
+<td><%= line %></td>
+
+<% else %>
+
+<% if i%3==2 %>
+<td><%= line %></td>
+
+
+<% else %>
+<td><%= line %></td>
+</tr>
+
 <% end %>
-
-<%= File.read("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/Testing_parameters.txt") %>
-
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+</table>
 <br>
 <br><center><%= link_to 'Edit', edit_patient_path(@patient) %>
 

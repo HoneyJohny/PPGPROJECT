@@ -3,6 +3,7 @@ http_basic_authenticate_with name: "honey", password: "honey", except: [:index, 
 def index
     @patients = Patient.all
   end
+
 def show
     @patient = Patient.find(params[:id])
   end
