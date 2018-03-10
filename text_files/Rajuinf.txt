@@ -1,0 +1,6 @@
+Pulse rate indicates Tachycardia
+Delta T value indicates slowing down of reflected wave from tissues. This could be due to any blockage in circulatory path
+Augmentation index indicates very high risk of stiffening of artery, blocking of circulatory path and Lipidemia. Require urgent checkup.
+Stiffness index indicates risk of atherosclerosis, Stroke, peripheral artery disease. Require urgent checkup.
+Cardiac Output measurement indicates reduced Cardiac Ouput. This may be due to any signs of blockages or sclerosis. Require urgent checkup.
+Vascular age indicates signs of arterial aging which is an indicator of cardiovascular disease. Require urgent checkup.

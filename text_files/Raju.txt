@@ -1,0 +1,30 @@
+PARAMETERS
+NORMAL RANGES
+OBSERVATION
+STATUS
+Heart rate
+60-100 bpm
+120  bpm
+Tachycardia
+Delta T
+250 - 350 ms
+400  ms
+Abnormal
+Stiffness Index
+< 700 cm/s 
+801  cm/s
+Abnormal
+Augmentation Index
+> 70% 
+30  %
+Abnormal
+Cardiac Output
+2 - 10 L/min
+1  L/min
+Abnormal
+Vascular age
+10 +/- 5 
+1  years
+-
+
+

@@ -1,0 +1,30 @@
+PARAMETERS
+NORMAL RANGES
+OBSERVATION
+STATUS
+Heart rate
+60-100 bpm
+88.8888888889  bpm
+Normal
+Delta T
+250 - 350 ms
+296.923076923  ms
+Normal
+Stiffness Index
+< 700 cm/s 
+528.756476684  cm/s
+Normal
+Augmentation Index
+> 70% 
+82.3878434564  %
+Normal
+Cardiac Output
+2 - 10 L/min
+2.24588434752  L/min
+Normal
+Vascular age
+21 +/- 5 
+16.8853368202  years
+Normal
+
+
