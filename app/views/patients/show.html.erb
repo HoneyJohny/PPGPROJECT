@@ -113,6 +113,12 @@
 </table>
 <% end %>
 
+<h2>Comments</h2>
+<%= render @patient.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
 <br><center><%= link_to 'Edit', edit_patient_path(@patient) %>
 
 <%= link_to 'Back', patients_path %></center>
