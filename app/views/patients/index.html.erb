@@ -1,14 +1,18 @@
+ <%= link_to 'create new patient', new_patient_path %>
+<br>
 <center><h1><b>List of Patients</b></h1>
- <table>
+ <table border=1>
 <tr>
-   <h2> <th><b>Name</b></th>
-    <th>Age</th>
-     <th>Height</th>
+   <h2> <th><b>Registration ID</b></th>
+        <th><b>Name</b></th>
+  
  
-</h2></tr>
+</h2>
+<th colspan ="20"></th></tr>
  
   <% @patients.each do |patient| %>
     <h3><tr>
+<td><%= patient.regid %></td>
       <td><%= patient.name %></td>
       
       <td><%= link_to 'Show', patient_path(patient) %></td>
@@ -20,6 +24,4 @@
     </tr></h3>
   <% end %>
 </table><h3>
- <%= link_to 'create new patient', new_patient_path %>
 <br>
-<%= link_to 'Home', welcome_index_path %></center></h3>

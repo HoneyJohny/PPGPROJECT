@@ -2,6 +2,12 @@
 <h2><big><b>PATIENT DATA</b></big></h2>
 
 <table>
+
+<tr>
+<td><strong>Registration ID:</strong></td>
+<td><%= @patient.regid %></td>
+</tr>
+
 <tr>
 <td><strong>Name:</strong></td>
 <td><%= @patient.name %></td>
@@ -10,6 +16,11 @@
 <tr>
 <td><strong>Age:</strong></td>
 <td><%= @patient.age %></td>
+</tr>
+
+<tr>
+<td><strong>gender:</strong></td>
+<td><%= @patient.gender %></td>
 </tr>
 
 <tr>
@@ -29,17 +40,19 @@
   
 </table>
 </fieldset>
-
-<br>
+<center>
+<button class="button"><big><b><%= link_to 'EDIT', edit_patient_path(@patient) %></b></big></button>
+<button class="button"><big><b><%= link_to 'BACK', patients_path %></b></big></button>
+</center>
 
 <fieldset>
 <h2><big><b>DIAGNOSIS:</b></big></h2>
 
-<% if File.exists?"/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.name}.txt" %>
+<% if File.exists?"/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt" %>
 <table border="2">
 
 <% i=0 %>
-<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.name}.txt").each_line do |line| %>
+<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt").each_line do |line| %>
 <% break if i==28%>
 <% i=i+1 %>
 
@@ -96,14 +109,14 @@
 <fieldset>
 <h2><big><b>INFERENCE:</b></big></h2>
 <br>
-<% if File.exists?"/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.name}inf.txt" %>
+<% if File.exists?"/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}inf.txt" %>
 <% i=0 %>
-<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.name}inf.txt").each_line do |line| %>
+<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}inf.txt").each_line do |line| %>
 <% i=i+1 %>
 <% end %>
 <table>
 <% j=0 %>
-<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.name}inf.txt").each_line do |line| %>
+<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}inf.txt").each_line do |line| %>
 <% break if j==i %>
 <% j=j+1 %>
 <tr>
@@ -118,7 +131,7 @@
 <br>
 
 <fieldset>
-<h2>Comments</h2>
+<h2>DISCUSSION FORUM:</h2>
 <%= render @patient.comments %>
  
 <h2>Add a comment:</h2>
@@ -126,8 +139,4 @@
 </fieldset>
 <br>
 
-<center>
-<button class="button"><big><b><%= link_to 'EDIT', edit_patient_path(@patient) %></b></big></button>
-<button class="button"><big><b><%= link_to 'BACK', patients_path %></b></big></button>
-</center>
 <br>

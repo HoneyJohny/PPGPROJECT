@@ -23,7 +23,7 @@ def edit
 end
   def create
   @patient = Patient.new(patient_params)
- 
+  @patient.regid=Time.now.to_i
   if @patient.save
     redirect_to patients_url 
   else
@@ -51,6 +51,6 @@ def destroy
 end
  private
   def patient_params
-    params.require(:patient).permit(:name, :age, :height, :weight, :bloodgroup)
+    params.require(:patient).permit(:name, :age, :height, :weight, :bloodgroup, :gender)
   end
 end

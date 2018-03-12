@@ -1,15 +1,21 @@
 <p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
+    
+<b>
+Dr.
+<%= comment.commenter %><br>
+
+ Date: </b><%= comment.created_at.strftime("%Y-%m-%d") %>
+ <b>Time: </b><%= comment.created_at.localtime.strftime("%H:%M:%S") %></p>
+
  
 <p>
-  <strong>Comment:</strong>
+  
   <%= comment.body %>
 </p>
 
 <p>
-  <%= link_to 'Destroy Comment', [comment.patient, comment],
+
+  <center><%= link_to 'Delete Comment', [comment.patient, comment],
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
-</p>
+</p></center>
