@@ -1,6 +1,6 @@
- <%= link_to 'create new patient', new_patient_path %>
+<button class="button"><big><b><%= link_to 'CREATE NEW PATIENT', new_patient_path %></b></big></button>
 <br>
-<center><h1><b>List of Patients</b></h1>
+<center><h1><b>LIST OF PATIENTS</b></h1>
  <table border=1>
 <tr>
    <h2> <th><b>Registration ID</b></th>
@@ -15,11 +15,11 @@
 <td><%= patient.regid %></td>
       <td><%= patient.name %></td>
       
-      <td><%= link_to 'Show', patient_path(patient) %></td>
-      <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-      <td><%= link_to 'Delete', patient_path(patient),
+      <td><button class="button"><big><b><%= link_to 'SHOW', patient_path(patient) %></b></big></button></td>
+      <td><button class="button"><big><b><%= link_to 'EDIT', edit_patient_path(patient) %></b></big></button></td>
+      <td><button class="button"><big><b><%= link_to 'DELETE', patient_path(patient),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Are you sure?' } %></b></big></button></td>
     
     </tr></h3>
   <% end %>

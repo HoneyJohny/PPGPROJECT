@@ -10,18 +10,25 @@ def index
 
 def show
     if user_signed_in?
-    @patient = Patient.find(params[:id])
+      @patient = Patient.find(params[:id])
     else
+      redirect_to new_user_session_path
+    end
+end
+
+def new
+    @patients = Patient.new  
+end
+
+def edit
+  if user_signed_in?
+    @patient = Patient.find(params[:id])
+  else
     redirect_to new_user_session_path
     end
-  end
-  def new
-@patients = Patient.new  
 end
-def edit
-  @patient = Patient.find(params[:id])
-end
-  def create
+  
+def create
   @patient = Patient.new(patient_params)
   @patient.regid=Time.now.to_i
   if @patient.save
@@ -29,7 +36,8 @@ end
   else
     render 'new'
   end
-  end
+end
+
 def update
   @patient = Patient.find(params[:id])
  
@@ -39,6 +47,7 @@ def update
     render 'edit'
   end
 end
+
 def destroy
   if user_signed_in?
   @patient = Patient.find(params[:id])

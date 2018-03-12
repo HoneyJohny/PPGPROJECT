@@ -49,47 +49,62 @@
 <h2><big><b>DIAGNOSIS:</b></big></h2>
 
 <% if File.exists?"/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt" %>
-<table border="2">
-
 <% i=0 %>
 <% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt").each_line do |line| %>
-<% break if i==28%>
 <% i=i+1 %>
+<% end %>
 
-<% if i==1 %>
+<% k=0 %>
+<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt").each_line do |line| %>
+<% k=k+1 %>
+<% if k==i %>
+<strong><%= line %></strong>
+<% end %>
+<% end %>
+<br>
+<br>
+<table border="2">
+
+<% j=0 %>
+<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt").each_line do |line| %>
+<% if j<i-1 %>
+<% j=j+1 %>
+
+<% if j==1 %>
 <tr>
 <th><big><%= line %></big></th>
 
 <% else %>
-<% if i==2 %>
+<% if j==2 %>
 <th><big><%= line %></big></th>
 
 <% else %>
-<% if i==3 %>
+<% if j==3 %>
 <th><big><%= line %></big></th>
 
 <% else %>
-<% if i==4 %>
+<% if j==4 %>
 <th><big><%= line %></big></th>
 </tr>
 
 <% else %>
-<% if i%4==1 %>
+<% if j%4==1 %>
 <tr>
 <td><%= line %></td>
 
 <% else %>
-<% if i%4==2 %>
+<% if j%4==2 %>
 <td><%= line %></td>
 
 <% else %>
-<% if i%4==3 %>
+<% if j%4==3 %>
 <td><%= line %></td>
 
 <% else %>
 <td><%= line %></td>
 </tr>
 
+<% end %>
 <% end %>
 <% end %>
 <% end %>
@@ -99,6 +114,8 @@
 <% end %>
 <% end %>
 </table>
+
+
 <% else %>
 <h3>Data Not yet Acquired<h3>
 <% end %>
@@ -126,6 +143,7 @@
 <% end %>
 </table>
 <% end %>
+
 </fieldset>
 
 <br>
