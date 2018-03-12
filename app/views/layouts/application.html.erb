@@ -9,6 +9,18 @@
   </head>
 
   <body>
+
+    <% if user_signed_in? %>
+      <div class="buttons">
+      <button class="button"><big><b><%= link_to "HOME", welcome_index_path %></b></big></button>
+      <button class="button"><big><b><%= link_to "PATIENTS", patients_path %></b></big></button>
+      <button class="button"><big><b><%= link_to("LOGOUT", destroy_user_session_path, :method => :delete) %></b></big></button>
+      </div>
+    <% end %>
+    <hr />
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>

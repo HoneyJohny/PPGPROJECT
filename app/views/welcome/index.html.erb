@@ -1,12 +1,27 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<center><h1><b><i>WELCOME</i></b></h1>
-
-<h2><b><%= link_to 'PPG Analyser', controller: 'patients' %></b></h2></center>
+<br />
+<br />
+<br />
+<br />
+<center>
+<% if !user_signed_in? %>
+<br />
+<br />
+<fieldset>
+<h1><big>WELCOME</big></h1>
+</fieldset>
+<br />
+<fieldset>
+<h2><%= link_to 'LOGIN', new_user_session_path %></h2>
+</fieldset>
+<% else %>
+<fieldset>
+<h1><big>PPG ANALYSIS</big></h1>
+</fieldset>
+<br />
+<fieldset>
+<h2><%= link_to 'PATIENTS DETAILS', patients_path %></h2>
+</fieldset>
+<% end %>
+</center>
 <body background="/home/pi/project/app/views/image4.jpg">
 </body>

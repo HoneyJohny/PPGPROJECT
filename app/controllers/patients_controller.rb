@@ -1,11 +1,19 @@
 class PatientsController < ApplicationController
-http_basic_authenticate_with name: "honey", password: "honey", except: [:index, :show]
+
 def index
+    if user_signed_in?
     @patients = Patient.all
+    else
+    redirect_to new_user_session_path
+    end
   end
 
 def show
+    if user_signed_in?
     @patient = Patient.find(params[:id])
+    else
+    redirect_to new_user_session_path
+    end
   end
   def new
 @patients = Patient.new  
@@ -32,13 +40,17 @@ def update
   end
 end
 def destroy
+  if user_signed_in?
   @patient = Patient.find(params[:id])
   @patient.destroy
+  else
+    redirect_to new_user_session_path
+    end
  
   redirect_to patients_path
 end
  private
   def patient_params
-    params.require(:patient).permit(:name, :age, :height, :weight, :bloodgroup, :comments)
+    params.require(:patient).permit(:name, :age, :height, :weight, :bloodgroup)
   end
 end
