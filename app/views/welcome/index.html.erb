@@ -30,9 +30,15 @@ Sree Lakshmi M
 <h1><big>PPG ANALYSIS</big></h1>
 </fieldset>
 <br />
+<% if current_user.email =='hospital@gmail.com' %>
+<fieldset>
+<h2><%= link_to 'CREATE NEW PATIENT', new_patient_path %></h2>
+</fieldset>
+<% else %>
 <fieldset>
 <h2><%= link_to 'PATIENTS DETAILS', patients_path %></h2>
 </fieldset>
+<% end %>
 <% end %>
 </center>
 <body background="/home/pi/project/app/views/image4.jpg">

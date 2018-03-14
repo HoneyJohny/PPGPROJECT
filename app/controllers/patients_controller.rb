@@ -2,7 +2,11 @@ class PatientsController < ApplicationController
 
 def index
     if user_signed_in?
+    if current_user.email =='doctor@gmail.com'
     @patients = Patient.all
+    else
+      redirect_to welcome_index_path,alert:"UNAUTHORISED ACCESS"
+    end
     else
     redirect_to new_user_session_path
     end
@@ -10,19 +14,36 @@ def index
 
 def show
     if user_signed_in?
+    if current_user.email =='doctor@gmail.com' or current_user.email =='hospital@gmail.com'
       @patient = Patient.find(params[:id])
+    else
+      redirect_to welcome_index_path,alert:"UNAUTHORISED ACCESS"
+    end
     else
       redirect_to new_user_session_path
     end
 end
 
 def new
+    if user_signed_in?
+    if current_user.email =='hospital@gmail.com'
     @patients = Patient.new  
+    else
+    
+    redirect_to welcome_index_path,alert:"UNAUTHORISED ACCESS"
+    end
+    else
+    redirect_to new_user_session_path
+    end
 end
 
 def edit
   if user_signed_in?
+  if current_user.email =='doctor@gmail.com' or current_user.email =='hospital@gmail.com'
     @patient = Patient.find(params[:id])
+  else
+      redirect_to welcome_index_path,alert:"UNAUTHORISED ACCESS"
+    end
   else
     redirect_to new_user_session_path
     end
@@ -32,7 +53,7 @@ def create
   @patient = Patient.new(patient_params)
   @patient.regid=Time.now.to_i
   if @patient.save
-    redirect_to patients_url 
+    redirect_to patient_path(@patient) 
   else
     render 'new'
   end
@@ -50,8 +71,12 @@ end
 
 def destroy
   if user_signed_in?
+  if current_user.email =='doctor@gmail.com' or current_user.email =='hospital@gmail.com'
   @patient = Patient.find(params[:id])
   @patient.destroy
+  else
+      redirect_to welcome_index_path,alert:"UNAUTHORISED ACCESS"
+    end
   else
     redirect_to new_user_session_path
     end

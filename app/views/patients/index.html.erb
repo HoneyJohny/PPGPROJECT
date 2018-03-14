@@ -1,4 +1,6 @@
-<button class="button"><big><b><%= link_to 'CREATE NEW PATIENT', new_patient_path %></b></big></button>
+
+<% if user_signed_in? %>
+<% if current_user.email =='doctor@gmail.com' %>
 <br>
 <center><h1><b>LIST OF PATIENTS</b></h1>
  <table border=1>
@@ -25,3 +27,12 @@
   <% end %>
 </table><h3>
 <br>
+<% else %>
+<h1> UNAUTHORISED ACCESS <h1>
+<button class="button"><big><b><%= link_to 'GO BACK', welcome_index_path %></b></big></button>
+<% end %>
+<% else %>
+<h1> UNAUTHORISED ACCESS <h1>
+<button class="button"><big><b><%= link_to 'GO BACK', welcome_index_path %></b></big></button>
+<% end %>
+
