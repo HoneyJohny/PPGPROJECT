@@ -5,16 +5,19 @@
 <center><h1><b>LIST OF PATIENTS</b></h1>
  <table border=1>
 <tr>
-   <h2> <th><b>Registration ID</b></th>
-        <th><b>Name</b></th>
-  
+   <h2> <th><b><%= sortable "regid" %></b><% if sort_column =='regid' %>
+               <% if sort_direction =='asc' %><span> (&uarr;)</span>
+               <% else %><span>(&darr;)</span><% end %><% end %></th>
+        <th><b><%= sortable "name" %></b><% if sort_column =='name' %>
+               <% if sort_direction =='asc' %><span>(&uarr;)</span>
+               <% else %><span>(&darr;)</span><% end %><% end %></th>
  
 </h2>
 <th colspan ="20"></th></tr>
  
-  <% @patients.each do |patient| %>
+  <% for patient in @patients %>
     <h3><tr>
-<td><%= patient.regid %></td>
+      <td><%= patient.regid %></td>
       <td><%= patient.name %></td>
       
       <td><button class="button"><big><b><%= link_to 'SHOW', patient_path(patient) %></b></big></button></td>

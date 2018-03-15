@@ -1,9 +1,10 @@
 class PatientsController < ApplicationController
 
+helper_method :sort_column, :sort_direction
 def index
     if user_signed_in?
     if current_user.email =='doctor@gmail.com'
-    @patients = Patient.all
+    @patients = Patient.order(sort_column + " " + sort_direction)
     else
       redirect_to welcome_index_path,alert:"UNAUTHORISED ACCESS"
     end
@@ -86,5 +87,13 @@ end
  private
   def patient_params
     params.require(:patient).permit(:name, :age, :height, :weight, :bloodgroup, :gender)
+  end
+
+  def sort_column
+    Patient.column_names.include?(params[:sort]) ? params[:sort] : "regid"
+  end
+  
+  def sort_direction
+   %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

@@ -9,14 +9,15 @@
   </head>
 
   <body>
-
     <% if user_signed_in? %>
       <div class="buttons">
-      <button class="button"><big><b><%= link_to "HOME", welcome_index_path %></b></big></button>
+      <button class="button"><big><b><%= link_to "HOME", welcome_index_path %></b></big></button></th>
       <% if current_user.email=='doctor@gmail.com' %>
-        <button class="button"><big><b><%= link_to "PATIENTS", patients_path %></b></big></button>
+        <button class="button"><big><b><%= link_to "PATIENTS", patients_path %></b></big></button></th>
       <% end %>
-      <button class="button"><big><b><%= link_to("LOGOUT", destroy_user_session_path, :method => :delete) %></b></big></button>
+      <span> | &nbsp Logged in as: <%= current_user.email %></span>
+      <button class="button"><big><b><%= link_to("LOGOUT", destroy_user_session_path, :method => :delete) %></b></big></button></th>
+      </span>
       </div>
     <% end %>
     <hr />
