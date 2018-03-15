@@ -1,4 +1,3 @@
-<% if user_signed_in? %>
 <% if current_user.email =='hospital@gmail.com' or current_user.email=='doctor@gmail.com' %>
 <fieldset>
 <h2><big><b>PATIENT DATA</b></big></h2>
@@ -48,8 +47,10 @@
 
 <center>
 <button class="button"><big><b><%= link_to 'EDIT', edit_patient_path(@patient) %></b></big></button>
-<button class="button"><big><b><%= link_to 'DELETE', patient_path(@patient),
-              method: :delete,
+<button class="button"><big><b><%= link_to 'DELETE', patient_path(@patient),
+
+              method: :delete,
+
               data: { confirm: 'Are you sure?' } %></b></big></button>
 <button class="button"><big><b><%= link_to 'BACK', welcome_index_path %></b></big></button>
 </center>
@@ -176,5 +177,4 @@
 </fieldset>
 <br>
 <br>
-<% end %>
 <% end %>
