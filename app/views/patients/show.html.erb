@@ -1,6 +1,6 @@
 <% if current_user.email =='hospital@gmail.com' or current_user.email=='doctor@gmail.com' %>
 <fieldset>
-<h2><big><b>PATIENT DATA</b></big></h2>
+<legend><h2><big><b>PATIENT DATA</b></big></h2></legend>
 
 <table>
 
@@ -65,8 +65,31 @@
 <button class="button"><big><b><%= link_to 'BACK', patients_path %></b></big></button>
 </center>
 
+
+<% if File.exists?"/home/pi/FinalWebapp2/app/assets/images/plots/#{@patient.regid}.png" %>
 <fieldset>
-<h2><big><b>DIAGNOSIS:</b></big></h2>
+<legend><h2><big><b>ACQUIRED PPG SIGNAL</b></big></h2></legend>
+<% if File.exists?"/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt" %>
+<% i=0 %>
+<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt").each_line do |line| %>
+<% i=i+1 %>
+<% end %>
+
+<% k=0 %>
+<% File.open("/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt").each_line do |line| %>
+<% k=k+1 %>
+<% if k==i %>
+<strong><%= line %></strong>
+<% end %>
+<% end %>
+<% end %>
+<%= image_tag("/assets/plots/#{@patient.regid}.png", :size=>"10*10", :alt=>"test") %>
+</fieldset>
+<% end %>
+<br>
+
+<fieldset>
+<legend><h2><big><b>DIAGNOSIS:</b></big></h2></legend>
 
 <% if File.exists?"/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}.txt" %>
 <% i=0 %>
@@ -144,7 +167,7 @@
 <br>
 
 <fieldset>
-<h2><big><b>INFERENCE:</b></big></h2>
+<legend><h2><big><b>INFERENCE:</b></big></h2></legend>
 <br>
 <% if File.exists?"/home/pi/Desktop/DATABASE/PARAMETERS EXTRACTED/#{@patient.regid}inf.txt" %>
 <% i=0 %>
@@ -169,7 +192,7 @@
 <br>
 
 <fieldset>
-<h2>DISCUSSION FORUM:</h2>
+<legend><h2>DISCUSSION FORUM:</h2></legend>
 <%= render @patient.comments %>
  
 <h2>Add a comment:</h2>
